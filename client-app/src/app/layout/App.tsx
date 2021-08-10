@@ -23,10 +23,8 @@ function App() {
     <Fragment>
       <NavBar />
       <Container style={{marginTop: '7em'}}>
-       <ActivityDashboard activities={activities} />
+        <ActivityDashboard activities={activities} />
       </Container>
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        
     </Fragment>
   );
 }
