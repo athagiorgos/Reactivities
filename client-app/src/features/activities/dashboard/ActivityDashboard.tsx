@@ -12,6 +12,9 @@ interface Props {
   selectedActivity: Activity | undefined;
   selectActivity: (id: string) => void;
   cancelSelectActivity: () => void;
+  editMode: boolean;
+  openForm: (id: string) => void;
+  closeForm: () => void;
 }
 
 export default function ActivityDashboard({
@@ -19,6 +22,9 @@ export default function ActivityDashboard({
   selectedActivity,
   selectActivity,
   cancelSelectActivity,
+  editMode,
+  openForm,
+  closeForm,
 }: Props) {
   return (
     <Grid>
@@ -27,13 +33,18 @@ export default function ActivityDashboard({
       </Grid.Column>
       <GridColumn width="6">
         {/* if the activity exists */}
-        {selectedActivity && (
+
+        {/* The Components in the following JSX will only appear if the statements are true */}
+        {selectedActivity && !editMode && (
           <ActivityDetails
             activity={selectedActivity}
             cancelSelectActivity={cancelSelectActivity}
+            openForm={openForm}
           />
         )}
-        <ActivityForm />
+        {editMode && (
+          <ActivityForm closeForm={closeForm} activity={selectedActivity} />
+        )}
       </GridColumn>
     </Grid>
   );
