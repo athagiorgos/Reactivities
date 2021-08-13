@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { resolve } from "dns";
 import { Activity } from "../models/activity";
 
 const sleep = (delay: number) => {
@@ -35,7 +34,7 @@ const Activities = {
   details: (id: string) => requests.get<Activity>(`/activities/${id}`),
   create: (activity: Activity) => requests.post<void>("/activities", activity),
   update: (activity: Activity) =>
-    requests.put<Activity>("/activities", activity),
+    requests.put<void>(`/activities/${activity.id}`, activity),
   delete: (id: string) => requests.del<void>(`/activities/${id}`),
 };
 
