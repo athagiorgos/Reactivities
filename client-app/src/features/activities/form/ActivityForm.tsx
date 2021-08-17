@@ -113,7 +113,7 @@ export default observer(function ActivityForm() {
         />
         <Button
           as={Link}
-          to="/activities"
+          to={`/activities/${activity.id}`}
           floated="right"
           type="submit"
           content="Cancel"
