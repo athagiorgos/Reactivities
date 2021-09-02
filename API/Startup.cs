@@ -38,7 +38,7 @@ namespace API
             services.AddControllers(options => 
             {
                 // Now every single endpoint in our api requires authentication
-                var policy = new AuthorizationPolicyBuilder().Build();
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             })
             .AddFluentValidation(ConfigurationBinder =>
