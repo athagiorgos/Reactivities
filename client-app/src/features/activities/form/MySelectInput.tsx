@@ -1,4 +1,3 @@
-import { placeholder } from "@babel/types";
 import { useField } from "formik";
 import React from "react";
 import { FormField, Label, Select } from "semantic-ui-react";
