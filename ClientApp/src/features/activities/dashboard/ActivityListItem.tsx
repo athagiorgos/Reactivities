@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Icon, Item, Segment } from "semantic-ui-react";
+import {Button, Icon, Item, ItemDescription, Label, Segment} from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import { format } from "date-fns";
+import ActivityListItemAttendee from "./ActivityListItemAttendee";
 
 interface Props {
   activity: Activity;
@@ -19,7 +20,21 @@ export default function ActivityListItem({ activity }: Props) {
               <Item.Header as={Link} to={`activities/${activity.id}`}>
                 {activity.title}
               </Item.Header>
-              <Item.Description>Hosted By Bob</Item.Description>
+              <Item.Description>Hosted By {activity.host?.displayName}</Item.Description>
+                {activity.isHost && (
+                    <ItemDescription>
+                        <Label basic color='orange'>
+                            You are hosting this activity
+                        </Label>
+                    </ItemDescription>
+                )}
+                {activity.isGoing && !activity.isHost && (
+                    <ItemDescription>
+                        <Label basic color='orange'>
+                            You are going to this activity
+                        </Label>
+                    </ItemDescription>
+                )}
             </Item.Content>
           </Item>
         </Item.Group>
@@ -30,7 +45,9 @@ export default function ActivityListItem({ activity }: Props) {
           <Icon name="marker" /> {activity.venue}
         </span>
       </Segment>
-      <Segment secondary>Attendees go here</Segment>
+      <Segment secondary>
+          <ActivityListItemAttendee attendees={activity.attendees!}/>
+      </Segment>
       <Segment clearing>
         <span>{activity.description}</span>
         <Button
