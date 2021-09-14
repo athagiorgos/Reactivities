@@ -1,5 +1,7 @@
 using Application.Activities;
 using Application.Core;
+using Application.Interfaces;
+using Infrastucture.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +39,8 @@ namespace API.Extensions
 
             // Tells AutoMapper where to find mapping profiles
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            // Binding IUserAccessor interface with UserAccessor implementation class
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;
         }
