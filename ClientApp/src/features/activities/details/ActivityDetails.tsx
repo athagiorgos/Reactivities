@@ -28,10 +28,10 @@ export default observer(function ActivityDetails() {
       <GridColumn width={10}>
         <ActivityDetailHeader activity={activity} />
         <ActivityDetailedInfo activity={activity} />
-        <ActivityDetailedChat />
+        <ActivityDetailedChat /> 
       </GridColumn>
       <GridColumn width={6}>
-        <ActivityDetailedSidebar attendees={activity.attendees!}/>
+        <ActivityDetailedSidebar activity={activity}/>
       </GridColumn>
     </Grid>
   );

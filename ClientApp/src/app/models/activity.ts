@@ -8,7 +8,7 @@ export interface Activity {
   category: string;
   city: string;
   venue: string;
-  hostUsername?: string;
+  hostUserName?: string;
   isCanceled?: boolean;
   isGoing?: boolean;
   isHost?: boolean;
