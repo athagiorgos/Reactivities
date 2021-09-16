@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import {Profile} from "../../app/models/profile";
 import {observer} from "mobx-react-lite";
 import {Card, CardContent, CardDescription, CardHeader, Icon, Image} from "semantic-ui-react";

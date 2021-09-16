@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import {observer} from "mobx-react-lite";
 import {Image, List, ListItem, Popup, PopupContent} from "semantic-ui-react";
 import {Profile} from "../../../app/models/profile";
@@ -8,7 +8,6 @@ import ProfileCard from "../../profiles/ProfileCard";
 interface Props {
     attendees: Profile[];
 }
-
 
 export default observer(function ActivityListItemAttendee({attendees} : Props){
     return (
