@@ -2,7 +2,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import {store} from "./store";
-import {log} from "util";
 
 export default class ProfileStore {
     profile: Profile | null = null;
@@ -58,12 +57,12 @@ export default class ProfileStore {
     }
     
     setMainPhoto = async (photo: Photo) => {
-        this.loadingProfile = true;
+        this.loading = true;
         try {
             await agent.Profiles.setMainPhoto(photo.id);
             store.userStore.setImage(photo.url);
             runInAction(() => {
-                console.log(this.loading)
+                //console.log(this.loading)
                 if (this.profile && this.profile.photos) {
                     this.profile.photos.find(p => p.isMain)!.isMain = false;
                     this.profile.photos.find(p => p.id === photo.id)!.isMain = true;
