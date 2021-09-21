@@ -63,7 +63,7 @@ export default observer(function ActivityForm() {
 
   return (
     <Segment clearing>
-      <Header content="Activity Deatails" sub color="teal" />
+      <Header content="Activity Details" sub color="teal" />
       <Formik
         validationSchema={validationSchema}
         enableReinitialize
@@ -100,7 +100,7 @@ export default observer(function ActivityForm() {
             />
             <Button
               as={Link}
-              to={`/activities/${activity.id}`}
+              to={`/activities`}
               floated="right"
               type="submit"
               content="Cancel"
